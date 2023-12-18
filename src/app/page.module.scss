@@ -1,0 +1,9 @@
+@import './variables';
+
+.toggle-button {
+  background-color: $accent-500;
+
+  &:hover {
+    background-color: $accent-400;
+  }
+}

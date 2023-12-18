@@ -1,0 +1,11 @@
+@import './variables';
+
+:root {
+  color: $black;
+  background-color: white;
+
+  &.dark {
+    color: white;
+    background-color: $primary-900;
+  }
+}
