@@ -1,0 +1,60 @@
+@import '../app/variables';
+
+.root {
+  position: fixed;
+  right: 50px;
+  bottom: 50px;
+  z-index: 4;
+}
+
+.trigger {
+  all: unset;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center; /* 가로 - 중앙으로 */
+  justify-content: center; /* 세로 - 상단으로 */
+  width: 50px;
+  height: 50px;
+  color: var(--theme-toggle-button-color);
+  cursor: pointer;
+  background-color: var(--theme-toggle-button-bg);
+  border-radius: 50%;
+}
+
+.content {
+  padding: 0.5rem 0;
+  margin-bottom: 1.2rem;
+  background-color: var(--theme-toggle-button-bg);
+  border-radius: 25px;
+  transform-origin: center;
+  animation-name: scale-up;
+  animation-duration: 0.5s;
+  animation-timing-function: cubic-bezier(1, -0.6, 0, 1.2);
+}
+
+.item {
+  position: relative;
+}
+
+@keyframes scale-up {
+  0% {
+    pointer-events: none;
+    transform: scale(0); // 시작할 때 메뉴는 작은 크기입니다.
+  }
+
+  100% {
+    pointer-events: auto;
+    transform: scale(1); // 끝날 때 메뉴는 원래 크기입니다.
+  }
+}
+
+.content-button {
+  all: unset;
+  display: inline-flex;
+  align-items: center; /* 가로 - 중앙으로 */
+  justify-content: center; /* 세로 - 상단으로 */
+  width: 50px;
+  height: 50px;
+  color: var(--theme-toggle-button-color);
+  cursor: pointer;
+}

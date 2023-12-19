@@ -4,8 +4,14 @@
   color: $black;
   background-color: white;
 
-  &.dark {
+  --theme-toggle-button-color: #{white};
+  --theme-toggle-button-bg: #{$primary-500};
+
+  &[data-theme='dark'] {
     color: white;
     background-color: $primary-900;
+
+    --theme-toggle-button-color: #{white};
+    --theme-toggle-button-bg: #{$secondary-500};
   }
 }
