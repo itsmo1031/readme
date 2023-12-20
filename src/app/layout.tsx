@@ -1,7 +1,13 @@
 import type { Metadata } from 'next';
+import localFont from 'next/font/local';
 import './globals.scss';
 import 'normalize.css';
 import ThemeProvider from '@/components/ThemeProvider';
+
+const font = localFont({
+  src: '../font/PretendardVariable.woff2',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -10,7 +16,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="ko" className={font.className}>
       <body>
         <ThemeProvider defaultTheme="system" enableSystem disableTransitionOnChange>
           {children}
