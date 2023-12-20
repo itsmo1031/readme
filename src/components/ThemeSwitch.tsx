@@ -10,12 +10,14 @@ import styles from './ThemeSwitch.module.scss';
 
 type Theme = 'light' | 'system' | 'dark';
 
-const createIcon = (Icon: IconType, size: number): ReactElement => <Icon size={size} />;
+const createIcon = (Icon: IconType, size: number, className?: string): ReactElement => (
+  <Icon size={size} className={className} />
+);
 
 const themeIcons: Record<Theme, ReactElement> = {
-  light: createIcon(PiSunDimFill, 28),
-  system: createIcon(PiMonitorFill, 26),
-  dark: createIcon(PiMoonStarsFill, 28),
+  light: createIcon(PiSunDimFill, 28, styles.sun),
+  system: createIcon(PiMonitorFill, 26, styles.system),
+  dark: createIcon(PiMoonStarsFill, 28, styles.moon),
 };
 
 export default function ThemeSwitch() {

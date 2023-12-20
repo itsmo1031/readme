@@ -6,6 +6,7 @@
 
   --theme-toggle-button-color: #{white};
   --theme-toggle-button-bg: #{$primary-500};
+  --theme-toggle-button-hover: #{$primary-400};
 
   &[data-theme='dark'] {
     color: white;
@@ -13,5 +14,6 @@
 
     --theme-toggle-button-color: #{white};
     --theme-toggle-button-bg: #{$secondary-500};
+    --theme-toggle-button-hover: #{$secondary-400};
   }
 }

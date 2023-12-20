@@ -19,10 +19,29 @@
   cursor: pointer;
   background-color: var(--theme-toggle-button-bg);
   border-radius: 50%;
+
+  svg {
+    transition: transform 0.5s ease-in-out;
+  }
+
+  &:hover {
+    background-color: var(--theme-toggle-button-hover);
+
+    svg.sun {
+      transform: rotateZ(45deg);
+    }
+
+    svg.moon {
+      transform: rotateZ(30deg);
+    }
+
+    svg.system {
+      transform: scale(1.1);
+    }
+  }
 }
 
 .content {
-  padding: 0.5rem 0;
   margin-bottom: 1.2rem;
   background-color: var(--theme-toggle-button-bg);
   border-radius: 25px;
@@ -34,6 +53,22 @@
 
 .item {
   position: relative;
+
+  &:focus-visible {
+    outline: none;
+  }
+
+  &:first-child {
+    border-radius: 25px 25px 0 0;
+  }
+
+  &:last-child {
+    border-radius: 0 0 25px 25px;
+  }
+
+  &:hover {
+    background-color: var(--theme-toggle-button-hover);
+  }
 }
 
 @keyframes scale-up {
