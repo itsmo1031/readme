@@ -4,6 +4,7 @@ import { PiXBold, PiSunDimFill, PiMoonStarsFill, PiMonitorFill } from 'react-ico
 import { IconType } from 'react-icons';
 import { useTheme } from 'next-themes';
 import { ReactElement, useState, useEffect } from 'react';
+import { animated, useTransition } from '@react-spring/web';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import styles from './ThemeSwitch.module.scss';
 
@@ -21,6 +22,26 @@ export default function ThemeSwitch() {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const [open, setOpen] = useState(false);
+  const transitions = useTransition(open, {
+    initial: {
+      transform: 'scale(1) rotate(0deg)',
+      opacity: 1,
+    },
+    from: {
+      transform: 'scale(0) rotate(-180deg)',
+      opacity: 0,
+    },
+    enter: {
+      transform: 'scale(1) rotate(0deg)',
+      opacity: 1,
+    },
+    leave: {
+      transform: 'scale(0) rotate(180deg)',
+      opacity: 0,
+    },
+
+    reverse: true,
+  });
 
   useEffect(() => {
     setMounted(true);
@@ -35,7 +56,19 @@ export default function ThemeSwitch() {
       <DropdownMenu.Root onOpenChange={() => setOpen(!open)}>
         <DropdownMenu.Trigger asChild className={styles.trigger}>
           <button type="button" aria-label="Theme change button">
-            {open ? <PiXBold size={24} /> : themeIcons[theme as Theme]}
+            {transitions((style, item) =>
+              item ? (
+                <div className={styles.position}>
+                  <animated.div style={style}>
+                    <PiXBold size={24} />
+                  </animated.div>
+                </div>
+              ) : (
+                <div className={styles.position}>
+                  <animated.div style={style}>{themeIcons[theme as Theme]}</animated.div>
+                </div>
+              )
+            )}
           </button>
         </DropdownMenu.Trigger>
         <DropdownMenu.Portal>
